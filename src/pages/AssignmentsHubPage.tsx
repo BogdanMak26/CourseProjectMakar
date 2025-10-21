@@ -10,7 +10,7 @@ const AssignmentsHubPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/units')
+        axios.get('https://courseprojectmakar.onrender.com/api/units')
             .then(res => setUnits(res.data))
             .finally(() => setLoading(false));
     }, []);

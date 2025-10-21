@@ -15,7 +15,7 @@ const UnitManagementPage = () => {
     const fetchUnits = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:5000/api/units');
+            const response = await axios.get('https://courseprojectmakar.onrender.com/api/units');
             setUnits(response.data);
             setError('');
         } catch (err) {
@@ -37,7 +37,7 @@ const UnitManagementPage = () => {
             return;
         }
         try {
-            await axios.post('http://localhost:5000/api/units', { name: newUnitName });
+            await axios.post('https://courseprojectmakar.onrender.com/api/units', { name: newUnitName });
             setNewUnitName(''); // Очищуємо поле
             setIsAdding(false); // Ховаємо форму
             fetchUnits(); // Оновлюємо список
@@ -49,7 +49,7 @@ const UnitManagementPage = () => {
     const handleDeleteUnit = async (id: string) => {
         if (window.confirm('Ви впевнені, що хочете видалити цей підрозділ? Це може вплинути на закріплені засоби та користувачів.')) {
             try {
-                await axios.delete(`http://localhost:5000/api/units/${id}`);
+                await axios.delete(`https://courseprojectmakar.onrender.com/api/units/${id}`);
                 fetchUnits(); // Оновлюємо список
             } catch (err: any) {
                  setError(err.response?.data?.message || 'Помилка видалення підрозділу.');

@@ -26,7 +26,7 @@ const AddToolPage = () => {
 
     // Завантажуємо список підрозділів
     useEffect(() => {
-        axios.get('http://localhost:5000/api/units')
+        axios.get('https://courseprojectmakar.onrender.com/api/units')
             .then(res => setUnits(res.data))
             .catch(() => setError('Не вдалося завантажити список підрозділів.'));
     }, []);
@@ -67,7 +67,7 @@ const AddToolPage = () => {
         }
 
         try {
-            await axios.post('http://localhost:5000/api/tools', data, {
+            await axios.post('https://courseprojectmakar.onrender.com/api/tools', data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             alert('Засіб успішно додано!');

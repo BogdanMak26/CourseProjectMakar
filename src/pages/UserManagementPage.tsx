@@ -34,8 +34,8 @@ const UserManagementPage = () => {
         try {
             // ✨ 2. Завантажуємо і користувачів, і підрозділи
             const [usersRes, unitsRes] = await Promise.all([
-                axios.get('http://localhost:5000/api/soldiers'),
-                axios.get('http://localhost:5000/api/units')
+                axios.get('https://courseprojectmakar.onrender.com/api/soldiers'),
+                axios.get('https://courseprojectmakar.onrender.com/api/units')
             ]);
             setUsers(usersRes.data);
             setUnits(unitsRes.data);
@@ -80,7 +80,7 @@ const UserManagementPage = () => {
         if (userToDeleteId) {
             try {
                 setError(''); // Скидаємо попередню помилку
-                await axios.delete(`http://localhost:5000/api/soldiers/${userToDeleteId}`);
+                await axios.delete(`https://courseprojectmakar.onrender.com/api/soldiers/${userToDeleteId}`);
                 fetchData(); // Оновлюємо список
             } catch (err) {
                 setError('Помилка видалення користувача.');
@@ -95,9 +95,9 @@ const UserManagementPage = () => {
         setError('');
         try {
             if (isEditing) { // Редагування існуючого
-                await axios.put(`http://localhost:5000/api/soldiers/${isEditing}`, formData);
+                await axios.put(`https://courseprojectmakar.onrender.com/api/soldiers/${isEditing}`, formData);
             } else { // Створення нового
-                await axios.post('http://localhost:5000/api/soldiers', { ...formData, password });
+                await axios.post('https://courseprojectmakar.onrender.com/api/soldiers', { ...formData, password });
             }
             setShowForm(false);
             fetchData(); // Оновлюємо список

@@ -18,7 +18,7 @@ const LoginPage = () => {
         // ...перевірка на порожні поля...
 
         try {
-            const response = await axios.post('http://localhost:5000/api/login', {
+            const response = await axios.post('https://courseprojectmakar.onrender.com/api/login', {
                 login,
                 password
             });

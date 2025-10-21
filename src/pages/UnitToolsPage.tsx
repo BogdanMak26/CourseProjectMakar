@@ -24,12 +24,12 @@ const UnitToolsPage = () => {
             setLoading(true);
             try {
                 // 1. Завжди завантажуємо закріплені засоби
-                const assignedRes = await axios.get(`http://localhost:5000/api/units/${unitName}/tools`);
+                const assignedRes = await axios.get(`https://courseprojectmakar.onrender.com/api/units/${unitName}/tools`);
                 setAssignedTools(assignedRes.data);
 
                 // 2. Якщо режим додавання увімкнено, завантажуємо вільні засоби
                 if (isAdding) {
-                    const unassignedRes = await axios.get('http://localhost:5000/api/tools/unassigned');
+                    const unassignedRes = await axios.get('https://courseprojectmakar.onrender.com/api/tools/unassigned');
                     setUnassignedTools(unassignedRes.data);
                 }
             } catch (error) {
@@ -53,7 +53,7 @@ const UnitToolsPage = () => {
     const handleAssign = async () => {
         if (selectedTools.length === 0) return;
         try {
-            await axios.post('http://localhost:5000/api/tools/assign', { unitName, toolIds: selectedTools });
+            await axios.post('https://courseprojectmakar.onrender.com/api/tools/assign', { unitName, toolIds: selectedTools });
             setIsAdding(false);
             setSelectedTools([]);
             // Дані оновляться автоматично, оскільки isAdding зміниться, і useEffect спрацює знову

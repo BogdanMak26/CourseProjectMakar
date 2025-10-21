@@ -22,10 +22,10 @@ const EditToolPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const unitsRes = await axios.get('http://localhost:5000/api/units');
+                const unitsRes = await axios.get('https://courseprojectmakar.onrender.com/api/units');
                 setUnits(unitsRes.data);
 
-                const toolRes = await axios.get(`http://localhost:5000/api/tools/${id}`);
+                const toolRes = await axios.get(`https://courseprojectmakar.onrender.com/api/tools/${id}`);
                 const toolData = toolRes.data;
                 
                 setFormData({
@@ -78,7 +78,7 @@ const EditToolPage = () => {
         if (photo) { data.append('photo', photo); }
 
         try {
-            await axios.put(`http://localhost:5000/api/tools/${id}`, data, {
+            await axios.put(`https://courseprojectmakar.onrender.com/api/tools/${id}`, data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             alert('Дані успішно оновлено!');
@@ -129,7 +129,7 @@ const EditToolPage = () => {
 
                 <div className="form-section">
                     <h3>Фотографія</h3>
-                    {currentPhotoPath && <img src={`http://localhost:5000${currentPhotoPath}`} alt="Поточне фото" className="current-photo" />}
+                    {currentPhotoPath && <img src={`https://courseprojectmakar.onrender.com${currentPhotoPath}`} alt="Поточне фото" className="current-photo" />}
                     <p>Завантажте нове фото, щоб замінити поточне:</p>
                     <input type="file" name="photo" onChange={handleFileChange} />
                 </div>

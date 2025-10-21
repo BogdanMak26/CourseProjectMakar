@@ -29,7 +29,7 @@ const ToolsPage = () => {
         const fetchTools = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:5000/api/tools');
+                const response = await axios.get('https://courseprojectmakar.onrender.com/api/tools');
                 setTools(response.data);
                 setFilteredTools(response.data);
             } catch (err) {
