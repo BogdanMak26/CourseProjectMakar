@@ -41,7 +41,7 @@ const EditToolPage = () => {
                 });
                 setCurrentPhotoPath(toolData.photo_path || '');
                 setLoading(false);
-            } catch (err) {
+            } catch (err:any) {
                 setError('Не вдалося завантажити дані для редагування.');
                 setLoading(false);
             }
@@ -83,7 +83,7 @@ const EditToolPage = () => {
             });
             alert('Дані успішно оновлено!');
             navigate(`/tools/${id}`);
-        } catch (err) {
+        } catch (err:any) {
             setError('Помилка при оновленні даних.');
         }
     };

@@ -32,7 +32,7 @@ const UserManagementPage = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            // ✨ 2. Завантажуємо і користувачів, і підрозділи
+        
             const [usersRes, unitsRes] = await Promise.all([
                 axios.get('https://courseprojectmakar.onrender.com/api/soldiers'),
                 axios.get('https://courseprojectmakar.onrender.com/api/units')
@@ -40,7 +40,7 @@ const UserManagementPage = () => {
             setUsers(usersRes.data);
             setUnits(unitsRes.data);
             setError('');
-        } catch (err) {
+        } catch (err:any) {
             setError('Не вдалося завантажити дані.');
         } finally {
             setLoading(false);
@@ -82,7 +82,7 @@ const UserManagementPage = () => {
                 setError(''); // Скидаємо попередню помилку
                 await axios.delete(`https://courseprojectmakar.onrender.com/api/soldiers/${userToDeleteId}`);
                 fetchData(); // Оновлюємо список
-            } catch (err) {
+            } catch (err:any) {
                 setError('Помилка видалення користувача.');
             } finally {
                 setIsModalOpen(false); // Закриваємо вікно

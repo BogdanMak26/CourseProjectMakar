@@ -18,7 +18,7 @@ const UnitManagementPage = () => {
             const response = await axios.get('https://courseprojectmakar.onrender.com/api/units');
             setUnits(response.data);
             setError('');
-        } catch (err) {
+        } catch (err:any) {
             setError('Не вдалося завантажити список підрозділів.');
         } finally {
             setLoading(false);

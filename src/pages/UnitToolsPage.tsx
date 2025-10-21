@@ -32,7 +32,7 @@ const UnitToolsPage = () => {
                     const unassignedRes = await axios.get('https://courseprojectmakar.onrender.com/api/tools/unassigned');
                     setUnassignedTools(unassignedRes.data);
                 }
-            } catch (error) {
+            } catch (error:any) {
                 console.error("Помилка завантаження даних:", error);
             } finally {
                 setLoading(false);
@@ -57,7 +57,7 @@ const UnitToolsPage = () => {
             setIsAdding(false);
             setSelectedTools([]);
             // Дані оновляться автоматично, оскільки isAdding зміниться, і useEffect спрацює знову
-        } catch (error) {
+        } catch (error:any) {
             alert('Помилка закріплення.');
         }
     };
