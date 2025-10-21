@@ -32,7 +32,7 @@ const ToolDetailsPage = () => {
                 setLoading(true);
                 const response = await axios.get(`https://courseprojectmakar.onrender.com/api/tools/${id}`);
                 setTool(response.data);
-            } catch (err) {
+            } catch (err:any) {
                 setError('Не вдалося завантажити дані.');
             } finally {
                 setLoading(false);
@@ -58,9 +58,7 @@ const ToolDetailsPage = () => {
                     <img src={imageUrl} alt={tool.name} />
                 </div>
                 <div className="details-card__info">
-                    {/* ✨ ========================================================== */}
-                    {/* ✨ 1. ПОВЕРТАЄМО ВІДОБРАЖЕННЯ ВСІХ ДАНИХ                    */}
-                    {/* ✨ ========================================================== */}
+                    
                     <h1>{tool.name}</h1>
                     <span className="status-badge" data-status={tool.status}>
                         {tool.status}

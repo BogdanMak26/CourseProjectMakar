@@ -52,7 +52,7 @@ const AnalyticsPage = () => {
                     setChartData(null); // Якщо після фільтрації нічого не лишилось
                 }
 
-            } catch (err) {
+            } catch (err:any) {
                 console.error("Помилка завантаження/обробки даних:", err); // Додаємо лог
                 setError('Не вдалося завантажити дані для аналізу.');
             } finally {

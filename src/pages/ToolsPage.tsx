@@ -32,7 +32,7 @@ const ToolsPage = () => {
                 const response = await axios.get('https://courseprojectmakar.onrender.com/api/tools');
                 setTools(response.data);
                 setFilteredTools(response.data);
-            } catch (err) {
+            } catch (err:any) {
                 setError('Не вдалося завантажити дані про засоби зв\'язку.');
             } finally {
                 setLoading(false);
@@ -56,7 +56,7 @@ const ToolsPage = () => {
         setFilteredTools(result);
     }, [searchTerm, statusFilter, tools]);
 
-    // ✨ 1. Змінюємо функцію, щоб вона не реагувала на кліки по кнопках
+    
     const handleRowClick = (id: string, target: EventTarget) => {
         if ((target as HTMLElement).closest('.tools-table__actions')) {
             return; // Якщо клік був на кнопках, нічого не робимо
