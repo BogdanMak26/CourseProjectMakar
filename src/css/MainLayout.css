@@ -1,0 +1,279 @@
+/* src/css/MainLayout.css */
+
+/* --- Базова структура --- */
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Використовуємо 100vh для фіксованої висоти */
+    overflow: hidden; /* Забороняємо прокрутку на найвищому рівні */
+    background-color: var(--background-color); /* Переконайтесь, що ця змінна визначена у вашому головному CSS або :root */
+}
+
+/* --- Хедер --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    height: 60px;
+    background-color: var(--primary-color); /* Переконайтесь, що ця змінна визначена */
+    color: var(--text-on-primary); /* Переконайтесь, що ця змінна визначена */
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1001; /* Хедер завжди поверх */
+}
+.header__menu-button {
+    display: none; /* Ховаємо на десктопі */
+    background: none;
+    border: none;
+    color: var(--text-on-primary);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.header__logo img {
+    height: 40px;
+}
+.header__logo span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.header__user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.header__logout-button {
+    background: var(--button-color); /* Переконайтесь, що ця змінна визначена */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius); /* Переконайтесь, що ця змінна визначена */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.header__logout-button:hover {
+    background: var(--button-color-hover); /* Переконайтесь, що ця змінна визначена */
+}
+
+/* --- Основна частина --- */
+.layout__main-content {
+    display: flex;
+    flex-grow: 1;
+    position: relative; /* Важливо для позиціонування overlay */
+    overflow: hidden; /* Забороняємо прокрутку тут */
+}
+
+/* --- Сайдбар (Десктоп) --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--surface-color); /* Переконайтесь, що ця змінна визначена */
+    border-right: 1px solid var(--border-color); /* Переконайтесь, що ця змінна визначена */
+    padding: 1rem;
+    flex-shrink: 0;
+    overflow-y: auto; /* Вертикальна прокрутка */
+    overflow-x: hidden; /* Забороняємо горизонтальну прокрутку */
+    transition: transform 0.3s ease-in-out;
+    position: relative; /* Для кнопки закриття */
+}
+.sidebar__close-button {
+    display: none; /* Ховаємо кнопку закриття на десктопі */
+}
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%; /* Гарантуємо, що навігація займає всю висоту */
+}
+.sidebar__link {
+    text-decoration: none;
+    color: var(--text-color-light); /* Переконайтесь, що ця змінна визначена */
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s, color 0.2s;
+    font-weight: 500;
+    border: 1px solid transparent;
+    display: block;
+    box-sizing: border-box;
+}
+.sidebar__link:hover {
+    background-color: #f1f3f5;
+    color: var(--text-color-dark); /* Переконайтесь, що ця змінна визначена */
+}
+.sidebar__link.active {
+    background-color: var(--button-color);
+    color: white;
+    border-color: transparent;
+}
+
+/* --- Панель адміна в сайдбарі --- */
+.sidebar__admin-panel {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+.sidebar__admin-title {
+    font-size: 0.8rem;
+    color: #6c757d;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.sidebar__admin-panel .sidebar__link {
+    text-align: center;
+    border: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+    color: var(--text-color-dark);
+}
+.sidebar__admin-panel .sidebar__link.active {
+    border-color: var(--button-color);
+}
+
+/* --- Контент --- */
+.layout__page-content {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto; /* Прокрутка ТІЛЬКИ для основного контенту */
+}
+
+/* --- Футер --- */
+.layout__footer {
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    background-color: var(--primary-color);
+    color: var(--text-on-primary);
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+
+
+/* ✨ ========================================================== */
+/* ✨ АДАПТИВНІСТЬ (екрани до 768px)                          */
+/* ✨ ========================================================== */
+@media (max-width: 768px) {
+    .header__menu-button { display: block; }
+    .header__logo span, .header__user-info span { display: none; }
+
+    .sidebar {
+        position: fixed; /* Фіксоване позиціонування */
+        left: 0;
+        top: 0;
+        height: 100%; /* На всю висоту екрану */
+        transform: translateX(-100%); /* Ховаємо */
+        z-index: 1002; /* Поверх overlay */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        /* Стилі width, background-color, border-right, padding, overflow успадковуються */
+    }
+
+    .sidebar.open {
+        transform: translateX(0); /* Показуємо */
+    }
+
+    .sidebar__close-button {
+        display: block !important; /* Гарантуємо видимість */
+        position: absolute !important; /* Гарантуємо позицію */
+        top: 10px;
+        right: 10px;
+        z-index: 1003 !important; /* Поверх вмісту */
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-color-light);
+        cursor: pointer;
+        padding: 5px;
+        line-height: 1;
+    }
+
+    /* Стилі для навігації всередині мобільного сайдбару */
+    .sidebar .sidebar__nav {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.5rem;
+        width: 100% !important;
+        height: auto !important; /* Змінено з 100% */
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding-top: 40px; /* Додаємо відступ зверху, щоб не перекривалось кнопкою закриття */
+    }
+
+    /* Стилі для посилань всередині мобільного сайдбару */
+    .sidebar .sidebar__link {
+        color: var(--text-color-dark) !important; /* Гарантуємо темний колір */
+        opacity: 1 !important;
+        visibility: visible !important;
+        /* Решта стилів успадковується */
+    }
+
+    .sidebar .sidebar__link.active {
+        color: white !important; /* Гарантуємо білий колір */
+    }
+
+     .sidebar .sidebar__admin-panel {
+         opacity: 1 !important;
+         visibility: visible !important;
+    }
+     .sidebar .sidebar__admin-panel .sidebar__link {
+        color: var(--text-color-dark) !important;
+     }
+
+    /* Стилі для напівпрозорого фону (overlay) */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Затемнення */
+        z-index: 1001; /* Під сайдбаром, але над контентом і хедером */
+        animation: fadeIn 0.3s;
+        cursor: pointer;
+    }
+
+    .layout__page-content {
+        padding: 1rem;
+    }
+
+    /* Таблиці з горизонтальною прокруткою */
+    .tools-table, .users-table, .assignments-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+     .tools-table th, .tools-table td,
+     .users-table th, .users-table td,
+     .assignments-table th, .assignments-table td {
+        white-space: normal;
+        min-width: 100px;
+     }
+
+    /* Адаптація форм і карток */
+    .form-grid, .units-list, .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    .add-tool-form, .profile-card, .form-container, .details-card {
+        padding: 1rem;
+    }
+    .details-card {
+        flex-direction: column;
+    }
+    .details-card__image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

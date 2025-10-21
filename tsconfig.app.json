@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json", 
+  "compilerOptions": {
+    "composite": true,          // 2. Для оптимізації
+    "tsBuildInfoFile": "...",   // 3. Файл для прискорення збірки
+    "types": []
+  },
+  "include": ["src"]             
+}
