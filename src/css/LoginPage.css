@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Глобальні налаштування та змінні
+   ========================================================================== */
+:root {
+    /* Нова колірна схема з гарним контрастом */
+    --primary-color: #4a7c59;      /* Приглушений зелений */
+    --surface-color: #ffffff;         /* Білий для форми */
+    --background-color: #f0f2f5;      /* Світло-сірий фон */
+    --button-color: #002b5c;           /* Темно-синій для кнопки */
+    --button-color-hover: #001f42;     /* Темніший синій */
+    --text-color-dark: #212529;
+    --text-color-light: #6c757d;
+    --text-on-primary: #ffffff;       /* Білий текст для зеленого фону */
+    --border-color: #dee2e6;
+    --main-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* ==========================================================================
+   Скидання стилів та базова структура
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--main-font);
+    background-color: var(--background-color);
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Шапка (Header)
+   ========================================================================== */
+.login-page__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--text-on-primary); /* Використовуємо білий текст */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.login-page__logo {
+    height: 50px;
+    margin-right: 1rem;
+}
+
+.login-page__header-text h1 {
+    font-size: 1.25rem;
+    color: var(--text-on-primary);
+    margin: 0;
+}
+
+.login-page__header-text p {
+    font-size: 0.875rem;
+    color: var(--text-on-primary);
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Основний контент та форма
+   ========================================================================== */
+
+/* ✨ КЛЮЧОВЕ ВИПРАВЛЕННЯ ЦЕНТРУВАННЯ ✨ */
+.login-page__main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center; /* ЦЕНТРУЄ ФОРМУ ГОРИЗОНТАЛЬНО */
+    align-items: center;    /* ЦЕНТРУЄ ФОРМУ ВЕРТИКАЛЬНО */
+    padding: 2rem;
+}
+
+.login-page__form {
+    width: 100%;
+    max-width: 450px;
+    padding: 2.5rem;
+    background-color: var(--surface-color); /* Форма залишається білою */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+/* ... Решта стилів ... */
+.login-page__title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--text-color-dark);
+}
+
+.login-page__group { text-align: left; margin-bottom: 1.5rem; }
+.login-page__label { display: block; font-size: 0.875rem; margin-bottom: 0.5rem; }
+.login-page__input-wrapper { position: relative; }
+.login-page__icon { position: absolute; top: 50%; left: 1rem; transform: translateY(-50%); color: var(--border-color); }
+.login-page__input { width: 100%; padding: 0.75rem 1rem 0.75rem 3rem; font-size: 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); }
+
+.login-page__button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--button-color); /* Використовуємо синій для кнопки */
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+.login-page__button:hover {
+    background-color: var(--button-color-hover);
+}
+
+.login-page__footer {
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    background-color: var(--primary-color);
+    color: var(--text-on-primary); 
+    opacity: 0.8;
+}
+.footer {
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    background-color: var(--primary-color); /* Використовує глобальні змінні */
+    color: var(--text-on-primary);
+    opacity: 0.8;
+    flex-shrink: 0; /
+}

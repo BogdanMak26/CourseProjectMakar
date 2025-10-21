@@ -1,0 +1,47 @@
+.analytics-page h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.chart-container {
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    /* Задаємо максимальну ширину, щоб діаграма не розтягувалась безкінечно */
+    max-width: 900px; 
+    margin: 0 auto; /* Центруємо контейнер */
+}
+.analytics-page h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.chart-container {
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .analytics-page h1 {
+        font-size: 1.5rem; /* Зменшуємо заголовок */
+        margin-bottom: 1rem;
+    }
+
+    .chart-container {
+        padding: 1rem; /* Зменшуємо внутрішні відступи */
+        /* max-width залишається, щоб не розтягувати надто сильно на планшетах,
+           але на телефонах контейнер і так буде обмежений шириною екрану */
+    }
+}
+
+/* Додатково для дуже маленьких екранів */
+@media (max-width: 480px) {
+     .chart-container {
+        padding: 0.5rem; /* Ще менші відступи */
+     }
+}
