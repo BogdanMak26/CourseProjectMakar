@@ -30,7 +30,7 @@ const ToolDetailsPage = () => {
         const fetchToolDetails = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:5000/api/tools/${id}`);
+                const response = await axios.get(`https://courseprojectmakar.onrender.com/api/tools/${id}`);
                 setTool(response.data);
             } catch (err) {
                 setError('Не вдалося завантажити дані.');
@@ -47,7 +47,7 @@ const ToolDetailsPage = () => {
     if (!tool) return <p>Інформацію про засіб не знайдено.</p>;
 
     const imageUrl = tool.photo_path 
-        ? `http://localhost:5000${tool.photo_path}` 
+        ? `https://courseprojectmakar.onrender.com${tool.photo_path}` 
         : '/images/placeholder.jpg';
 
     return (

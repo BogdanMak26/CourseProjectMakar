@@ -28,7 +28,7 @@ const ProfilePage = () => {
         const fetchProfile = async () => {
             if (user) {
                 try {
-                    const response = await axios.post('http://localhost:5000/api/me', { login: user.login });
+                    const response = await axios.post('https://courseprojectmakar.onrender.com/api/me', { login: user.login });
                     setProfile(response.data);
                 } catch (err) {
                     console.error("Не вдалося завантажити профіль", err);
@@ -44,7 +44,7 @@ const ProfilePage = () => {
         e.preventDefault();
         setMessage('');
         try {
-            const response = await axios.put('http://localhost:5000/api/me/password', {
+            const response = await axios.put('https://courseprojectmakar.onrender.com/api/me/password', {
                 login: user?.login,
                 oldPassword,
                 newPassword

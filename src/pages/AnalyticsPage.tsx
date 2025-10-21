@@ -24,7 +24,7 @@ const AnalyticsPage = () => {
             setLoading(true); // Починаємо завантаження тут
             setError(''); // Скидаємо помилку
             try {
-                const response = await axios.get('http://localhost:5000/api/analytics/tools-by-unit');
+                const response = await axios.get('https://courseprojectmakar.onrender.com/api/analytics/tools-by-unit');
                 let stats: UnitStat[] = response.data;
 
                 // ✨ 1. ФІЛЬТРУЄМО ЗАПИСИ З unitName: null ✨
