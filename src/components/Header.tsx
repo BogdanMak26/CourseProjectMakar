@@ -9,7 +9,7 @@ const Header = () => {
         <header className="header">
             <div className="header__logo">
                 <img src="/logo.png" alt="Логотип" />
-                <span>Система обліку ТТД</span>
+                <span>Система обліку засобів зв'язку</span>
             </div>
             <div className="header__user-info">
                 <span>Вітаємо, {user?.fullName}!</span>
